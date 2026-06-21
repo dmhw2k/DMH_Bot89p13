@@ -27,7 +27,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 const prefix = '.';
-const ownerNumber = ['94776121326'];
+const ownerNumber = ['94785314984'];
 const credsPath = path.join(__dirname, '/auth_info_baileys/creds.json');
 
 async function ensureSessionFile() {
@@ -37,7 +37,7 @@ async function ensureSessionFile() {
       process.exit(1);
     }
 
-    console.log("🔄 creds.json not found. Downloading session from MEGA...");
+    console.log("❓ creds.json error. Downloading session from MEGA...");
 
     const sessdata = config.SESSION_ID;
     const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
@@ -50,7 +50,7 @@ async function ensureSessionFile() {
 
       fs.mkdirSync(path.join(__dirname, '/auth_info_baileys/'), { recursive: true });
       fs.writeFileSync(credsPath, data);
-      console.log("✅ Session downloaded and saved. Restarting bot...");
+      console.log("✅congratulations Session downloaded and saved. Reboot bot...");
       setTimeout(() => {
         connectToWA();
       }, 2000);
@@ -63,7 +63,7 @@ async function ensureSessionFile() {
 }
 
 async function connectToWA() {
-  console.log("Connecting DANUWA-MD 🧬...");
+  console.log("Connecting DMH🌐Androking...");
   const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, '/auth_info_baileys/'));
   const { version } = await fetchLatestBaileysVersion();
 
@@ -85,9 +85,9 @@ async function connectToWA() {
         connectToWA();
       }
     } else if (connection === 'open') {
-      console.log('✅ DANUWA-MD connected to WhatsApp');
+      console.log('✅ DMH Androking connected to WhatsApp ♻️');
 
-      const up = `DANUWA-MD connected ✅\n\nPREFIX: ${prefix}`;
+      const up = `▶️DMH Androking connected▶️\n\nPREFIX: ${prefix}`;
       await danuwa.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
         image: { url: `https://github.com/DANUWA-MD/DANUWA-MD/blob/main/images/DANUWA-MD.png?raw=true` },
         caption: up
